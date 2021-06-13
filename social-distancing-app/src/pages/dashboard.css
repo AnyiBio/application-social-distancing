@@ -1,0 +1,14 @@
+.dashboard-container > h2 {
+    font-family: monospace;
+}
+
+.dashboard-container {
+    display: flex;
+    align-items: center;
+    padding: 150px 50px;
+    background: linear-gradient(#FFFFFF, #F5F6F9);
+};
+
+.dashboard-container::fist-child {
+    margin: 100px;
+}
