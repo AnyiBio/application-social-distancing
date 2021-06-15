@@ -4,19 +4,23 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import Dashboard from './pages/dashboard';
+import Dashboard from './pages/dashboard/dashboard';
 import './App.css';
+import UploadModel from './pages/upload-model/upload-model';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <Dashboard />
-            </Route>
-          </Switch>
-        </Router>
+          </Route>
+          <Route exact path="/upload">
+            <UploadModel />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }

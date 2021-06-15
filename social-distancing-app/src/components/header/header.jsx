@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppBar, IconButton, Toolbar, Typography, makeStyles, Button } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import {useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -13,15 +14,16 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
     const classes = useStyles();
+    const history = useHistory()
+
+    const handleClickDashboard = () => history.push('')
+    const handleClickUpload = () => history.push('upload')
     return ( 
         <AppBar position="fixed" color="transparent">
             <Toolbar className={classes.root}>
-                <Typography 
-                    edge="start" 
-                    variant="h6" 
-                    color="secondary">
-                        Social distancing App
-                </Typography>
+                <Button size={"Large"} className={classes.margin}   color="secondary" onClick={handleClickDashboard}>
+                    Social distancing App
+                </Button>
                 <div>
                     <Button className={classes.margin}color="secondary">
                     MEET THE TEAM
@@ -29,7 +31,7 @@ const Header = () => {
                     <IconButton>
                         <GitHubIcon/>
                     </IconButton>
-                    <Button variant="outlined" color="secondary">
+                    <Button variant="outlined" color="secondary" onClick={handleClickUpload}>
                         START NOW, FREE
                     </Button>
                 </div>
