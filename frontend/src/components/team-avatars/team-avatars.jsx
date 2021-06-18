@@ -12,8 +12,8 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     large: {
-      width: theme.spacing(15),
-      height: theme.spacing(15),
+      width: theme.spacing(12),
+      height: theme.spacing(12),
     },
 }));
   
@@ -22,7 +22,7 @@ export default function TeamAvatars({imgAvatar, name}) {
 
   return (
     <div className={`team-avatar-container ${classes.root}`}>
-      <Avatar alt="Remy Sharp" src={imgAvatar} className={classes.large} />
+      <Avatar alt="Remy Sharp" src={'../assets/img/anyi.jpg'} className={classes.large} />
       <h3>{name}</h3>
     </div>
   );

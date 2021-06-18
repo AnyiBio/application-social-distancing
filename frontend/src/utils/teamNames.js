@@ -1,7 +1,10 @@
-const names = [   
+export const names = [   
     'Anyi Melissa Jaramillo Henao', 
     'Eduardo Jiménez Cobos', 
     'Adrian Sebastian Villarroel Zamudio', 
     'Edwin Chuchón Alva'];
 
-export default names;
+export const nickNames = [
+    '../../assets/img/anyi.jpg',
+    '../../assets/img/edu.jpg',
+];

@@ -2,8 +2,9 @@ import React from 'react'
 import TeamAvatars from '../../components/team-avatars/team-avatars';
 import Header from '../../components/header/header';
 import SliderImg from '../../components/slider-img/slider-img';
-import avatar from '../../assets/img/avatar.jpg'
-import names from '../../utils/teamNames'
+import anyi from '../../assets/img/anyi.jpg';
+import edu from '../../assets/img/edu.jpg';
+import { names, nickNames } from '../../utils/teamNames'
 import './dashboard.css';
 
 const Dashboard = () => {
@@ -17,7 +18,7 @@ const Dashboard = () => {
             <h1>The team</h1>
             <div className="team-container">
                 {names.map((item, index)=> (
-                        <TeamAvatars imgAvatar={index === 0 ? avatar : ''} name={item}/>
+                        <TeamAvatars imgAvatar={index === 0 ? anyi : ''} name={item}/>
                 ))}
             </div>
         </div>

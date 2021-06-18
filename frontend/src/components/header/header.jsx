@@ -1,7 +1,8 @@
 import React from 'react';
-import { AppBar, IconButton, Toolbar, Typography, makeStyles, Button } from '@material-ui/core';
+import { AppBar, IconButton, Toolbar, makeStyles, Button } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import './header.css';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,7 +22,7 @@ const Header = () => {
     return ( 
         <AppBar position="fixed" color="transparent">
             <Toolbar className={classes.root}>
-                <Button size={"Large"} className={classes.margin}   color="secondary" onClick={handleClickDashboard}>
+                <Button size={"Large"} className={classes.margin} color="secondary" onClick={handleClickDashboard}>
                     Social distancing App
                 </Button>
                 <div>
@@ -29,10 +30,15 @@ const Header = () => {
                     MEET THE TEAM
                     </Button>
                     <IconButton>
-                        <GitHubIcon/>
+                        <a 
+                            href="https://github.com/AnyiBio/application-social-distancing" 
+                            target="_blank" 
+                            rel="noreferrer">
+                                <GitHubIcon />
+                        </a>
                     </IconButton>
                     <Button variant="outlined" color="secondary" onClick={handleClickUpload}>
-                        START NOW, FREE
+                        START NOW
                     </Button>
                 </div>
             </Toolbar>
