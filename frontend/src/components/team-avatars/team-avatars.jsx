@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import './team-avatars.css';
@@ -22,8 +23,8 @@ export default function TeamAvatars({imgAvatar, name}) {
 
   return (
     <div className={`team-avatar-container ${classes.root}`}>
-      <Avatar alt="Remy Sharp" src={imgAvatar} className={classes.large} />
-      <h3>{name}</h3>
+        <Avatar alt="Remy Sharp" src={imgAvatar} className={classes.large} />
+        <h3>{name}</h3>
     </div>
   );
 }

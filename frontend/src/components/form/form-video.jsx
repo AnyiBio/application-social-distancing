@@ -45,12 +45,15 @@ import './form-video.css';
           onChange={handleFileChange}
           accept=".mov,.mp4,.jpg,.jpeg"
         />
-        {!frameFile && <Button variant="outlined" color="secondary" onClick={handleChoose}>UPLOAD A FILE!</Button>}
+        
+        <div className="w-5"></div>
+        <Button variant="outlined" color="secondary" onClick={handleChoose}>UPLOAD A FILE!</Button>
+        
         {frameFile && (
         <div className="d-flex">
           <div className="">
             <img
-              className="VideoInput_video"
+              className=""
               width="100%"
               height={frameFile}
               alt="frame-file"

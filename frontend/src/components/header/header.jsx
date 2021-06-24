@@ -15,10 +15,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
     const classes = useStyles();
-    const history = useHistory()
+    const history = useHistory();
 
-    const handleClickDashboard = () => history.push('')
-    const handleClickUpload = () => history.push('upload')
+    const handleClickDashboard = () => history.push('');
+    
     return ( 
         <AppBar position="fixed" color="transparent">
             <Toolbar className={classes.root}>
@@ -37,9 +37,6 @@ const Header = () => {
                                 <GitHubIcon />
                         </a>
                     </IconButton>
-                    <Button variant="outlined" color="secondary" onClick={handleClickUpload}>
-                        START NOW
-                    </Button>
                 </div>
             </Toolbar>
         </AppBar>

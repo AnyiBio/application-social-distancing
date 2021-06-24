@@ -1,10 +1,16 @@
 .dashboard-page {
     display: flex;
     flex-direction: column;
+    background-color: #0c163b;
+}
+
+.footer-container {
+    background-color: white;
 }
 
 .team-container {
     align-self: center;
+    color: white;
 }
 
 .dashboard-container > h2 {
