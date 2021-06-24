@@ -123,19 +123,17 @@ def do_nms(boxes, nms_thresh):
 					boxes[index_j].classes[c] = 0
 
 # load and prepare an image
-def load_image_pixels(filename, shape):
+def load_image_pixels(image, shape):
 	# load the image to get its shape
-	image = load_img(filename)
-	width, height = image.size
+	height, width, channels = image.shape
 	# load the image with the required size
-	image = load_img(filename, target_size=shape)
-	# convert to numpy array
-	image = img_to_array(image)
+	image = cv2.resize(image, shape, interpolation = cv2.INTER_AREA)
 	# scale pixel values to [0, 1]
 	image = image.astype('float32')
 	image /= 255.0
 	# add a dimension so that we have one sample
 	image = expand_dims(image, 0)
+	print(np.shape(image))
 	return image, width, height
 
 # get all of the results above a threshold
@@ -156,7 +154,7 @@ def get_boxes(boxes, labels, thresh):
 # draw all results
 def draw_boxes(v_boxes):
     rectangles = []
-    coord = []
+    coords = []
     # plot each box
     for i in range(len(v_boxes)):
         box = v_boxes[i]
@@ -177,43 +175,47 @@ def draw_boxes(v_boxes):
 
 def draw_boxes_distances(filename, v_boxes, rectangles):
 
-    color = []
-    if len(rectangles) >= 2:
-        for i in range(len(rectangles)):
-            centroidsA = rectangles[i].xy
-        for j in range(len(rectangles)):
-            centroidsB = rectangles[j].xy
-            D = dist.euclidean(centroidsA, centroidsB) 
-            if D <= MIN_DISTANCE and i != j:
-                color.append(i)
-    return color
+	color = []
+	if len(rectangles) >= 2:
+	  for i in range(len(rectangles)):
+		  centroidsA = rectangles[i].xy
+		  for j in range(len(rectangles)):
+			  centroidsB = rectangles[j].xy
+			  D = dist.euclidean(centroidsA, centroidsB) 
+			  if D <= MIN_DISTANCE and i != j:
+				  box = v_boxes[i]
+					# get coordinates
+				  y1, x1, y2, x2 = box.ymin, box.xmin, box.ymax, box.xmax
+				  color.append([y1, x1, y2, x2])
+	return color
 
 def distanceModel(image_bytes):
 
-    frame = np.array(Image.open(io.BytesIO(image_bytes))) 
-    photo_filename = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+	frame = np.array(Image.open(io.BytesIO(image_bytes))) 
+	photo_filename = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+	#photo_filename = Image.open(io.BytesIO(image_bytes))
 
-    image, image_w, image_h = load_image_pixels(photo_filename, (input_w, input_h))
-    # make prediction
-    yhat = model.predict(image)
+	image, image_w, image_h = load_image_pixels(photo_filename, (input_w, input_h))
+	# make prediction
+	yhat = model.predict(image)
 
-    # define the anchors
-    anchors = [[116,90, 156,198, 373,326], [30,61, 62,45, 59,119], [10,13, 16,30, 33,23]]
-    # define the probability threshold for detected objects
-    class_threshold = 0.6
-    boxes = list()
-    for i in range(len(yhat)):
-        # decode the output of the network
-        boxes += decode_netout(yhat[i][0], anchors[i], class_threshold, input_h, input_w)
-    # correct the sizes of the bounding boxes for the shape of the image
-    correct_yolo_boxes(boxes, image_h, image_w, input_h, input_w)
-    # suppress non-maximal boxes
-    do_nms(boxes, 0.5)
-    # define the labels
-    labels = ["person"]
-    # get the details of the detected objects
-    v_boxes, v_labels, v_scores = get_boxes(boxes, labels, class_threshold)
-    # draw what we found
-    rectangles, coords = draw_boxes(v_boxes)
-    color = draw_boxes_distances(photo_filename, v_boxes, rectangles)
-    return coords, color
+	# define the anchors
+	anchors = [[116,90, 156,198, 373,326], [30,61, 62,45, 59,119], [10,13, 16,30, 33,23]]
+	# define the probability threshold for detected objects
+	class_threshold = 0.6
+	boxes = list()
+	for i in range(len(yhat)):
+		# decode the output of the network
+		boxes += decode_netout(yhat[i][0], anchors[i], class_threshold, input_h, input_w)
+	# correct the sizes of the bounding boxes for the shape of the image
+	correct_yolo_boxes(boxes, image_h, image_w, input_h, input_w)
+	# suppress non-maximal boxes
+	do_nms(boxes, 0.5)
+	# define the labels
+	labels = ["person"]
+	# get the details of the detected objects
+	v_boxes, v_labels, v_scores = get_boxes(boxes, labels, class_threshold)
+	# draw what we found
+	rectangles, coords = draw_boxes(v_boxes)
+	color = draw_boxes_distances(photo_filename, v_boxes, rectangles)
+	return coords, color

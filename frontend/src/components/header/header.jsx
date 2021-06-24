@@ -22,7 +22,7 @@ const Header = () => {
     return ( 
         <AppBar position="fixed" color="transparent">
             <Toolbar className={classes.root}>
-                <Button size={"Large"} className={classes.margin} color="secondary" onClick={handleClickDashboard}>
+                <Button size={"large"} className={classes.margin} color="secondary" onClick={handleClickDashboard}>
                     Social distancing App
                 </Button>
                 <div>

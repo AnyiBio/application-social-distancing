@@ -22,7 +22,7 @@ export default function TeamAvatars({imgAvatar, name}) {
 
   return (
     <div className={`team-avatar-container ${classes.root}`}>
-      <Avatar alt="Remy Sharp" src={'../assets/img/anyi.jpg'} className={classes.large} />
+      <Avatar alt="Remy Sharp" src={imgAvatar} className={classes.large} />
       <h3>{name}</h3>
     </div>
   );

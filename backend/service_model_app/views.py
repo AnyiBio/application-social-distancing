@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def request_img(request):
 
-    image_bytes = request.FILES['image'].read()
-    coords, color = distanceModel(image_bytes)
+    image = request.FILES['image'].read()
+    coords, color = distanceModel(image)
 
     return JsonResponse({'coordenadas':coords, 'indices':color})
