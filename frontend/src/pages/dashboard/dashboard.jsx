@@ -30,10 +30,10 @@ const Dashboard = () => {
                 </div>
                 <SliderImg />
             </div>
-            <h1>The team</h1>
+            <h1 className="m-4 text-white align-self-center">The team</h1>
             <div className="team-container">
                 {names.map((item)=> (
-                        <TeamAvatars imgAvatar={item.avatar} name={item.name}/>
+                        <TeamAvatars imgAvatar={item.avatar} name={item.name} letter={item.letter}/>
                 ))}
             </div>
             <div className="footer-container">

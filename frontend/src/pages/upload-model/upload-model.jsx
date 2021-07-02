@@ -1,5 +1,5 @@
 import React from 'react'
-import FormVideo from '../../components/form/form-video';
+import FormFile from '../../components/form-file/form-file';
 import Header from '../../components/header/header';
 import './upload-model.css';
 
@@ -7,8 +7,8 @@ const UploadModel = () => {
     return (  
     <div className="upload-model-page">
         <Header />
-        <div className="video-container">
-            <FormVideo />
+        <div className="file-container">
+            <FormFile />
         </div>
     </div>);
 }
