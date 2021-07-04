@@ -44,7 +44,7 @@ export default function FormFile () {
     if(frameFile!== null) {
       setTextButton('UPLOAD A NEW FILE!');
     }
-  }, frameFile);
+  }, [frameFile]);
 
   return (
     <div className="input-container d-flex justify-content-center">
@@ -70,11 +70,11 @@ export default function FormFile () {
               alt="frame-file"
               src={frameFile}
               />
-            {responseModel.indices ? responseModel.coordenadas.map((item) => (
-              <div className="square border-success" style={{height: `${item[2]-item[0]}px`, width: `${item[3]-item[1]}px`, top: `${item[0]}px`, left: `${item[1]}px`}}></div>
+            {responseModel.indices ? responseModel.coordenadas.map((item, index) => (
+              <div key={index} className="square border-success" style={{height: `${item[2]-item[0]}px`, width: `${item[3]-item[1]}px`, top: `${item[0]}px`, left: `${item[1]}px`}}></div>
             )) : ''}
-            {responseModel.indices ? responseModel.indices.map((item) => (
-              <div className="square border-danger" style={{height: `${item[2]-item[0]}px`, width: `${item[3]-item[1]}px`, top: `${item[0]}px`, left: `${item[1]}px`}}></div>
+            {responseModel.indices ? responseModel.indices.map((item, index) => (
+              <div key={index} className="square border-danger" style={{height: `${item[2]-item[0]}px`, width: `${item[3]-item[1]}px`, top: `${item[0]}px`, left: `${item[1]}px`}}></div>
             )) : ''}      
             </div>
             <div className="mt-5">
