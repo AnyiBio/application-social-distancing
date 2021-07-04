@@ -61,7 +61,7 @@ export default function FormFile () {
           type="file"
           hidden
           onChange={handleFileChange}
-          accept=".mov,.mp4,.jpg,.jpeg,.png"
+          accept=".jpg,.jpeg,.png"
         />
         {frameFile && (
         <>
