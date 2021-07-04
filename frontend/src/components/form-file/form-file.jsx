@@ -61,7 +61,7 @@ export default function FormFile () {
           type="file"
           hidden
           onChange={handleFileChange}
-          accept=".mov,.mp4,.jpg,.jpeg"
+          accept=".mov,.mp4,.jpg,.jpeg,.png"
         />
         {frameFile && (
         <>
@@ -79,22 +79,25 @@ export default function FormFile () {
             </div>
             <div className="mt-5">
                 <h2>{`${responseModel?.coordenadas.length} people detected in the image`}</h2> 
-                <h2>{`En la imagen hay ${responseModel?.indices.length} people not complying with the minimum safety distance`}</h2>
+                <h2>{`At the images there are ${responseModel?.indices.length} people who do not complying with the minimum safety distance`}</h2>
             </div>
         </>
       )}
       </div>
-      <motion.div className="align-self-center" 
-          animate={{
-            scale: [1, 2, 2, 1, 1],
-            rotate: [0, 0, 270, 270, 0],
-            borderRadius: ["20%", "20%", "50%", "50%", "20%"],
-          }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-      >
-        <Button variant="outlined" color="secondary" onClick={handleChoose}>{textButton}</Button>
-      </motion.div>
+      <div className="align-self-center">
+        <motion.div className="text-center mb-3"
+            animate={{
+              scale: [1, 2, 2, 1, 1],
+              rotate: [0, 0, 270, 270, 0],
+              borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+            }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+        >
+          <Button variant="outlined" color="secondary" onClick={handleChoose}>{textButton}</Button>
+        </motion.div>
+        <p className="text-sm-center">**Upload an image png jpeg or jpg format**</p>
+      </div>
      </> )}
     </div>
   );

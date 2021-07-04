@@ -22,7 +22,7 @@ const Footer = () => {
                         Documentation  
                     </Link>
                 </li>
-                <li className="m-2 text-left">
+                <li className="m-2">
                     <Link
                         className="text-dark"
                         style={{ textDecoration: 'none' }}
@@ -33,10 +33,21 @@ const Footer = () => {
                         Slideshow  
                     </Link>
                 </li>
+                <li className="m-2">
+                    <Link
+                        className="text-dark"
+                        style={{ textDecoration: 'none' }}
+                        to={"//github.com/AnyiBio/application-social-distancing/projects/1"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >
+                        Methodology - Kanban board  
+                    </Link>
+                </li>
         </div>
         <div>
             <h3>Contact Us</h3>
-            <li>
+            <li className="m-2">
                     <Link
                         className="text-dark"
                         style={{ textDecoration: 'none' }}

@@ -17,7 +17,7 @@ const Dashboard = () => {
             <Header />
             <div className="dashboard-container">
                 <div className="d-flex flex-column justify-content-evenly">
-                    <h2>Do you want to know if you comply with the safety distance?</h2>
+                    <h2 className="mb-3">Do you want to know if you comply with the safety distance?</h2>
                     <Button 
                         className="align-self-center" 
                         variant="contained" 
